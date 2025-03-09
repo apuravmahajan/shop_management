@@ -1,0 +1,60 @@
+<?DOCTYPE html>
+<html>
+  <head>
+    <title>Display Sales</title>
+    <style>
+      table {
+        width: 100%;
+        border-collapse: collapse; /* Makes the borders collapse into a single line */
+      }
+      th,
+      td {
+        border: 1px solid black; /* Adds a border around each cell */
+        padding: 8px; /* Adds space inside each cell */
+        text-align: center; /* Centers text inside cells */
+      }
+      th {
+        background-color: #f2f2f2; /* Optional: Adds a background color to headers */
+      }
+    </style>
+  </head>
+  <body>
+    {%if not submitted%}
+    <h1>Request Sales</h1>
+    <form method="POST" action="{% url 'display' %}">
+      {%csrf_token%}
+      <input type="date" name="date1" />
+      <label for="date">Date1</label>
+      <input type="date" name="date2" />
+      <label for="date">Date2</label>
+      <input type="submit" />
+    </form>
+    {%endif%} {%if submitted%}
+    <h1>Sales</h1>
+    <p>Total Items: {{ items }}</p>
+    <p>Total Profit: {{ total_profit }}</p>
+    <p>Total Profit (after margin): {{ total_profit_m }}</p>
+
+    <h2>Grouped Sales Data</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Profit</th>
+          <th>Items Sold</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for group in data %}
+        <tr>
+          <td>{{ group.date }}</td>
+          <td>{{ group.sales_count }}</td>
+          <td>{{ group.items_count }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <a href="{% url 'display' %}">Display More Sales</a>
+    {%endif%}
+  </body>
+</html>

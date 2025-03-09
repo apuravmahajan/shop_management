@@ -1,0 +1,29 @@
+<?DOCTYPE html>
+<html>
+  <head>
+    <title>Update Sales</title>
+  </head>
+  <body>
+    {%if not submitted%}
+    <h1>Update Sales</h1>
+    <form method="POST" action="{% url 'update' %}">
+      {%csrf_token%}
+      <input
+        type="number"
+        name="writtensp"
+        placeholder="Written Selling Price"
+      />
+      <input type="number" name="actualsp" placeholder="Actual Selling Price" />
+      <input type="date" name="date" />
+      <input type="submit" />
+    </form>
+    {%endif%} {%if submitted%}
+    <h1>Sales Updated</h1>
+    <p>Cost Price: {{cp}}</p>
+    <p>Selling Price: {{sp}}</p>
+    <p>Profit: {{profit}}</p>
+
+    <a href="{% url 'update' %}">Update Another Sale</a>
+    {%endif%}
+  </body>
+</html>

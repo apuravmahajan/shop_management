@@ -1,0 +1,41 @@
+# Ignore the Python bytecode files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore the virtual environment directory (for Python projects)
+venv/
+env/
+
+# Ignore any log files
+*.log
+
+# Ignore IDE/editor files
+.vscode/
+.idea/
+
+# Ignore OS-generated files (e.g., MacOS, Windows)
+.DS_Store
+Thumbs.db
+
+# Ignore environment configuration files
+*.env
+.env/
+
+# Ignore coverage and test reports (useful for testing frameworks)
+.coverage
+*.cover
+
+# Ignore database files
+*.sqlite3
+
+# Ignore the node_modules directory (for Node.js projects)
+node_modules/
+
+# Ignore the build output directories (for front-end or other build tools)
+dist/
+build/
+
+# Ignore any other IDE-related files
+*.iml
+*.swp

@@ -1,0 +1,27 @@
+<?DOCTYPE html>
+<html>
+  <head>
+    <title>Delete Sales</title>
+  </head>
+  <body>
+    {%if submitted%}
+    <h1>Sale Deleted</h1>
+    <a href="{% url 'delete' %}">Delete More Sales</a>
+    {%endif%} {%if not submitted%}
+    <h1>Sales</h1>
+    {%for sale in data%}
+    <p>Id : {{sale.id}}</p>
+    <p>Cost Price: {{sale.cp}}</p>
+    <p>Selling Price: {{sale.sp}}</p>
+    <p>Profit: {{sale.profit}}</p>
+    <hr />
+    {%endfor%}
+    <form method="POST" action="{% url 'delete' %}">
+      {%csrf_token%}
+      <input type="number" name="id" placeholder="id" />
+      <input type="submit" />
+    </form>
+
+    {%endif%}
+  </body>
+</html>
