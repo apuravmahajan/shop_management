@@ -42,3 +42,6 @@ def delete(request):
     else:
         data = salesData.objects.all()
         return render(request, 'delete.html', {'submitted':False, 'data':data})
+    
+def home(request):
+    return render(request, 'home.html')
